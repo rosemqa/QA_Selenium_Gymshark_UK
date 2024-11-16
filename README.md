@@ -1,1 +1,1 @@
-# QA_Selenium_Adidas_US
+# QA_Selenium_Gymshark_UK
