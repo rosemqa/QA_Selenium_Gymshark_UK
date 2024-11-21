@@ -23,7 +23,7 @@ class BasePage:
                        message='Expected url {self.url} is not open, actual url {self.driver.current_url}')
 
     def find_element(self, locator, timeout=10):
-        return WebDriverWait(self.driver, timeout=10)\
+        return WebDriverWait(self.driver, timeout)\
             .until(EC.element_to_be_clickable(locator), message=f"Can't find element by locator {locator}")
 
     def find_elements(self, locator, timeout=10):
@@ -47,6 +47,17 @@ class BasePage:
     def get_current_url(self, timeout=1):
         time.sleep(timeout)
         return self.driver.current_url
+
+    def move_to_element(self, locator):
+        """Move cursor to element"""
+        action = ActionChains(self.driver)
+        element = self.find_element(locator)
+        action.move_to_element(element).perform()
+
+    def scroll_to_element(self, locator):
+        """Scroll to element"""
+        element = self.find_element(locator)
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
     def move_mouse_by_offset(self, x_offset, y_offset):
         action = ActionChains(self.driver)

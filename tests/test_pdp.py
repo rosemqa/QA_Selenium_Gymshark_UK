@@ -13,6 +13,17 @@ class TestPDP:
         page.click_rating_button()
         assert page.is_reviews_title_in_viewport() is True, 'The page was not scrolled to the reviews section'
 
+    @allure.description('Can open and close the more reviews sheet')
+    def test_more_reviews(self, driver):
+        page = ProductPage(driver, PDP)
+        page.open_page()
+
+        page.click_more_reviews_button()
+        assert page.is_reviews_sheet_open() is True, 'More reviews sheet is not open'
+
+        page.close_review_sheet()
+        assert page.is_reviews_sheet_open() is False, 'More reviews sheet is not closed'
+
     @allure.description('Can open and close the size guide sheet')
     def test_size_guide(self, driver):
         page = ProductPage(driver, PDP)

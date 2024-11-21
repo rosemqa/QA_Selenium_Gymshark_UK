@@ -72,6 +72,17 @@ class ProductPage(BasePage):
     def click_rating_button(self):
         self.find_element(self.LOCATORS.REVIEWS_RATING_BTN).click()
 
+    @allure.step('Click the See More Reviews button')
+    def click_more_reviews_button(self):
+        more_reviews_button = self.LOCATORS.SEE_MORE_REVIEWS_BTN
+        time.sleep(1)
+        self.move_to_element(more_reviews_button)
+        self.find_element(more_reviews_button).click()
+
+    @allure.step('Click the close button in the review sheet')
+    def close_review_sheet(self):
+        self.find_element(self.LOCATORS.CLOSE_REVIEWS_BTN).click()
+
     @allure.step('Click Add To Wishlist button (under the product title)')
     def click_add_to_wishlist_button(self):
         self.find_element(self.LOCATORS.PDP_ADD_TO_WISHLIST_BTN).click()
@@ -102,7 +113,8 @@ class ProductPage(BasePage):
 
     @allure.step('Check if the reviews sheet open')
     def is_reviews_sheet_open(self):
-        return self.is_element_present(self.LOCATORS.CLOSE_REVIEWS_BTN)
+        time.sleep(1)
+        return self.is_element_present(self.LOCATORS.CLOSE_REVIEWS_BTN, timeout=1)
 
     @allure.step('Check if the reviews title in the viewport')
     def is_reviews_title_in_viewport(self):
