@@ -40,21 +40,29 @@ class LoginPage(BasePage):
         return self.is_element_present(self.LOCATORS.HIDE_PASSWORD_TOOLTIP)
 
     @allure.step('Check if the username required error is present')
-    def is_username_required_error_present(self):
-        error = self.LOCATORS.USERNAME_REQUIRED_ERROR
-        return self.is_element_present(error), self.find_element(error).text
+    def is_email_required_error_present(self):
+        error = self.LOCATORS.EMAIL_REQUIRED_ERROR
+        if self.is_element_present(error, 2):
+            return True, self.find_element(error).text
+        return False, None
 
     @allure.step('Check if the password required error is present')
     def is_password_required_error_present(self):
         error = self.LOCATORS.PASSWORD_REQUIRED_ERROR
-        return self.is_element_present(error), self.find_element(error).text
+        if self.is_element_present(error, 2):
+            return True, self.find_element(error).text
+        return False, None
 
     @allure.step('Check if the error for incorrect email format is present')
     def is_email_invalid_error_present(self):
         error = self.LOCATORS.EMAIL_INVALID_ERROR
-        return self.is_element_present(error), self.find_element(error).text
+        if self.is_element_present(error, 2):
+            return True, self.find_element(error).text
+        return False, None
 
     @allure.step('Check if the wrong credentials error is present')
     def is_wrong_credentials_error_present(self):
         error = self.LOCATORS.WRONG_CREDENTIALS
-        return self.is_element_present(error), self.find_element(error).text
+        if self.is_element_present(error, 2):
+            return True, self.find_element(error).text
+        return False, None

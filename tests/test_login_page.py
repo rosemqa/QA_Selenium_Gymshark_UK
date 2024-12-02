@@ -31,9 +31,9 @@ class TestLoginPage:
 
             page.enter_password(AutData.PASSWORD)
             page.click_login_button()
-            error_is_present, error_text = page.is_username_required_error_present()
-            assert error_is_present, 'Username required error is missing'
-            assert error_text == Login.USERNAME_REQUIRED_ERROR_TEXT, 'Username required error text is incorrect'
+            error_is_present, error_text = page.is_email_required_error_present()
+            assert error_is_present, 'Email required error is missing'
+            assert error_text == Login.EMAIL_REQUIRED_ERROR_TEXT, 'Email required error text is incorrect'
 
         @allure.description('Can not login with empty password field')
         @allure.tag('negative')
