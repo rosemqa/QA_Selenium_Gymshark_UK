@@ -76,7 +76,7 @@ class TestLoginPage:
             page.click_login_button()
             error_is_present, error_text = page.is_wrong_credentials_error_present()
             assert error_is_present, 'Wrong credentials error is missing'
-            assert error_text == Login.WRONG_CREDENTIALS_ERROR_TEXT, 'Wrong credentials error is text incorrect'
+            assert error_text == Login.WRONG_CREDENTIALS_ERROR_TEXT, 'Wrong credentials error text is incorrect'
 
         @allure.description('Can show/hide password')
         def test_show_password(self, driver):
