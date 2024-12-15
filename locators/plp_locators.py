@@ -8,6 +8,9 @@ class PLPLocators:
     PRODUCT_PRICE = (By.CSS_SELECTOR, '[class*="product-card_product-price"]')
     PRODUCT_SIZE = (By.CSS_SELECTOR, '[data-locator-id*="plp-size"]')
     PRODUCT_TAG_NEW = (By.CSS_SELECTOR, '[data-locator-id="plp-productTag-new-read"]')
+    ADD_TO_WISHLIST = (By.CSS_SELECTOR, '[data-locator-id*="plp-productCardWishlist"]')
+
+    TOTAL_PRODUCT_COUNT = (By.CSS_SELECTOR, '[data-locator-id="plp-productCount-read"]')
 
     CLEAR_ALL_FILTERS = (By.CSS_SELECTOR, '[data-locator-id="filtersPanel-clearAll-select"]')
     SORT_BY_PRICE_ASC = (By.CSS_SELECTOR, '[data-locator-id="filtersPanel-filterOptionLabel-SORTLTH-select"]')
