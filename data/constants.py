@@ -10,3 +10,9 @@ class Bag:
     DISCOUNT_CODE_ERROR = '*The discount code is invalid.'
     EMPTY_BAG_TEXT = 'YOUR BAG IS EMPTY'
     REMOVED_PRODUCT_TOAST_TEXT = 'You removed an item from your bag.'
+
+
+class Wishlist:
+    EMPTY_WISHLIST_TITLE = 'YOUR WISHLIST IS EMPTY'
+    ITEM_REMOVED_TOAST_TEXT = 'Item removed from your wishlist'
+    ITEM_ADDED_TOAST_TEXT = 'Item added to your wishlist'
