@@ -1,12 +1,12 @@
 import allure
 from pages.product_listing_page import ProductListingPage
-from data.links import PLP
+from data.links import URL
 
 
 class TestPLP:
     @allure.description('Can sort by price asc/desc')
     def test_sorting_by_price(self, driver, check):
-        page = ProductListingPage(driver, PLP)
+        page = ProductListingPage(driver, URL.PLP)
         page.open_page()
 
         with check:
@@ -16,28 +16,28 @@ class TestPLP:
 
     @allure.description('Can load more products after clicking the Load More button')
     def test_load_more(self, driver):
-        page = ProductListingPage(driver, PLP)
+        page = ProductListingPage(driver, URL.PLP)
         page.open_page()
 
         assert page.load_more(), 'Product list does not increase after clicking the Load More button'
 
     @allure.description('Can load all products after clicking the View All button')
     def test_view_all_products(self, driver):
-        page = ProductListingPage(driver, PLP)
+        page = ProductListingPage(driver, URL.PLP)
         page.open_page()
 
         assert page.view_all_products(), 'Quantity of all products does not match the products quantity on PLP'
 
     @allure.description('Can sort by NEW')
     def test_sorting_by_newest(self, driver):
-        page = ProductListingPage(driver, PLP)
+        page = ProductListingPage(driver, URL.PLP)
         page.open_page()
 
         assert page.sort_by_new(), 'Sorting by NEW is incorrect'
 
     @allure.description('Can filter by price range')
     def test_price_filter(self, driver, check):
-        page = ProductListingPage(driver, PLP)
+        page = ProductListingPage(driver, URL.PLP)
         page.open_page()
 
         min_price, max_price = page.select_price_filter()
@@ -49,7 +49,7 @@ class TestPLP:
 
     @allure.description('Can reset filters via Clear All button')
     def test_clear_all(self, driver):
-        page = ProductListingPage(driver, PLP)
+        page = ProductListingPage(driver, URL.PLP)
         page.open_page()
 
         unfiltered_products_count = page.get_total_product_count_value()

@@ -1,6 +1,6 @@
 import allure
 from data.constants import Wishlist
-from data.links import WISHLIST
+from data.links import URL
 from pages.wishlist_page import WishlistPage
 
 
@@ -8,7 +8,7 @@ from pages.wishlist_page import WishlistPage
 class TestWishlist:
     @allure.description('Can delete product using the wishlist icon in the product card')
     def test_remove_product_via_wishlist_icon(self, driver, login, add_to_wishlist, clear_wishlist):
-        page = WishlistPage(driver, WISHLIST)
+        page = WishlistPage(driver, URL.WISHLIST)
         page.open_page()
 
         is_wishlist_empty, empty_wishlist_title = page.click_wishlist_icon_in_product_card()
@@ -17,7 +17,7 @@ class TestWishlist:
 
     @allure.description('Can delete product using the More menu')
     def test_remove_product_via_menu(self, driver, add_to_wishlist, clear_wishlist):
-        page = WishlistPage(driver, WISHLIST)
+        page = WishlistPage(driver, URL.WISHLIST)
         page.open_page()
 
         is_wishlist_empty, empty_wishlist_title = page.remove_product_in_more_menu()
@@ -26,7 +26,7 @@ class TestWishlist:
 
     @allure.description('Can clear the wishlist using the Remove All button')
     def test_remove_all_products(self, driver, login, add_to_wishlist, clear_wishlist):
-        page = WishlistPage(driver, WISHLIST)
+        page = WishlistPage(driver, URL.WISHLIST)
         page.open_page()
 
         is_wishlist_empty, empty_wishlist_title = page.remove_all_products()
@@ -35,7 +35,7 @@ class TestWishlist:
 
     @allure.description('Can select size in the size dropdown')
     def test_select_size(self, driver, login, add_to_wishlist, clear_wishlist):
-        page = WishlistPage(driver, WISHLIST)
+        page = WishlistPage(driver, URL.WISHLIST)
         page.open_page()
 
         random_size, selected_size = page.select_random_size()
@@ -43,7 +43,7 @@ class TestWishlist:
 
     @allure.description('Can add a product from wishlist to the bag using the Bag button')
     def test_add_to_bag_via_bag_button(self, driver, login, add_to_wishlist, clear_wishlist):
-        page = WishlistPage(driver, WISHLIST)
+        page = WishlistPage(driver, URL.WISHLIST)
         page.open_page()
 
         page.select_random_size()
@@ -53,7 +53,7 @@ class TestWishlist:
 
     @allure.description('Can add a product from wishlist to the bag using the More menu')
     def test_add_to_bag_via_menu(self, driver, login, add_to_wishlist, clear_wishlist):
-        page = WishlistPage(driver, WISHLIST)
+        page = WishlistPage(driver, URL.WISHLIST)
         page.open_page()
 
         page.select_random_size()
@@ -62,7 +62,7 @@ class TestWishlist:
 
     @allure.description('Can restore product after deletion')
     def test_undo_deletion(self, driver, login, check):
-        page = WishlistPage(driver, WISHLIST)
+        page = WishlistPage(driver, URL.WISHLIST)
         page.open_page()
 
         page.click_wishlist_icon_in_product_card()

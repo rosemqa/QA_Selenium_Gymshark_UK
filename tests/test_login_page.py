@@ -3,7 +3,7 @@ import allure
 import pytest
 from data.constants import Login
 from data.data import AutData
-from data.links import LOGIN_PAGE, ACCOUNT_PAGE
+from data.links import URL
 from pages.login_page import LoginPage
 
 
@@ -13,20 +13,20 @@ class TestLoginPage:
     class TestLoginToAccount:
         @allure.description('Can login with valid credentials')
         def test_happy_path_login(self, driver):
-            page = LoginPage(driver, LOGIN_PAGE)
+            page = LoginPage(driver, URL.LOGIN_PAGE)
             page.open_page()
 
             page.enter_email(AutData.LOGIN_EMAIL)
             page.enter_password(AutData.PASSWORD)
             page.click_login_button()
-            assert ACCOUNT_PAGE in page.get_current_url()
+            assert URL.ACCOUNT_PAGE in page.get_current_url()
 
     @allure.feature('Login page cases')
     class TestLoginPageCases:
         @allure.description('Can not login with empty email field')
         @allure.tag('negative')
         def test_login_with_empty_email(self, driver):
-            page = LoginPage(driver, LOGIN_PAGE)
+            page = LoginPage(driver, URL.LOGIN_PAGE)
             page.open_page()
 
             page.enter_password(AutData.PASSWORD)
@@ -38,7 +38,7 @@ class TestLoginPage:
         @allure.description('Can not login with empty password field')
         @allure.tag('negative')
         def test_login_with_empty_password(self, driver):
-            page = LoginPage(driver, LOGIN_PAGE)
+            page = LoginPage(driver, URL.LOGIN_PAGE)
             page.open_page()
 
             page.enter_email(AutData.LOGIN_EMAIL)
@@ -51,7 +51,7 @@ class TestLoginPage:
         @pytest.mark.parametrize('email', ['test mail.com', 'test@mailcom'])
         @allure.tag('negative')
         def test_login_with_incorrect_email_format(self, driver, email):
-            page = LoginPage(driver, LOGIN_PAGE)
+            page = LoginPage(driver, URL.LOGIN_PAGE)
             page.open_page()
 
             page.enter_email(email)
@@ -68,7 +68,7 @@ class TestLoginPage:
             (AutData.LOGIN_EMAIL, 'wrong_password')])
         @allure.tag('negative')
         def test_login_with_wrong_credentials(self, driver, email, password):
-            page = LoginPage(driver, LOGIN_PAGE)
+            page = LoginPage(driver, URL.LOGIN_PAGE)
             page.open_page()
 
             page.enter_email(email)
@@ -80,7 +80,7 @@ class TestLoginPage:
 
         @allure.description('Can show/hide password')
         def test_show_password(self, driver):
-            page = LoginPage(driver, LOGIN_PAGE)
+            page = LoginPage(driver, URL.LOGIN_PAGE)
             page.open_page()
 
             password = AutData.PASSWORD

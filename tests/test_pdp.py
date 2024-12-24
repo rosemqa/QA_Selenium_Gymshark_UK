@@ -1,5 +1,5 @@
 import allure
-from data.links import PDP
+from data.links import URL
 from pages.product_page import ProductPage
 
 
@@ -7,7 +7,7 @@ from pages.product_page import ProductPage
 class TestPDP:
     @allure.description('Can auto scroll to the reviews section when clicking the reviews button')
     def test_scroll_to_reviews(self, driver):
-        page = ProductPage(driver, PDP)
+        page = ProductPage(driver, URL.PDP)
         page.open_page()
 
         page.click_rating_button()
@@ -15,7 +15,7 @@ class TestPDP:
 
     @allure.description('Can open and close the more reviews sheet')
     def test_more_reviews(self, driver):
-        page = ProductPage(driver, PDP)
+        page = ProductPage(driver, URL.PDP)
         page.open_page()
 
         page.click_more_reviews_button()
@@ -26,7 +26,7 @@ class TestPDP:
 
     @allure.description('Can open and close the size guide sheet')
     def test_size_guide(self, driver):
-        page = ProductPage(driver, PDP)
+        page = ProductPage(driver, URL.PDP)
         page.open_page()
 
         page.open_size_guide()
@@ -37,7 +37,7 @@ class TestPDP:
 
     @allure.description('Can change the product color')
     def test_change_product_color(self, driver, check):
-        page = ProductPage(driver, PDP)
+        page = ProductPage(driver, URL.PDP)
         page.open_page()
 
         default_color = page.get_product_color_text()
@@ -50,7 +50,7 @@ class TestPDP:
 
     @allure.description('Can select a size; error appears if size is not selected')
     def test_select_size(self, driver):
-        page = ProductPage(driver, PDP)
+        page = ProductPage(driver, URL.PDP)
         page.open_page()
 
         # Check if error appears when adding a product to the cart without selecting a size
@@ -64,7 +64,7 @@ class TestPDP:
 
     @allure.description('Login prompt modal can be open and closed when clicking the add to wishlist for not auth user')
     def test_login_prompt(self, driver):
-        page = ProductPage(driver, PDP)
+        page = ProductPage(driver, URL.PDP)
         page.open_page()
 
         page.click_add_to_wishlist_button()
@@ -75,7 +75,7 @@ class TestPDP:
 
     @allure.description('Can copy the current page URL using Share button')
     def test_share_button(self, driver, check):
-        page = ProductPage(driver, PDP)
+        page = ProductPage(driver, URL.PDP)
         page.open_page()
 
         expected_url = page.click_share_button()
@@ -89,7 +89,7 @@ class TestPDP:
 
     @allure.description('Can scroll the image carousel using Up and Down buttons')
     def test_image_slider_buttons(self, driver, check):
-        page = ProductPage(driver, PDP)
+        page = ProductPage(driver, URL.PDP)
         page.open_page()
 
         value_before, value_after_down, value_after_up = page.check_image_slider()
