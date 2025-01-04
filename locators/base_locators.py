@@ -12,3 +12,4 @@ class BaseLocators:
     CLOSE_COOKIES_BTN = (By.CSS_SELECTOR, '.banner-close-button')
     GEOLOCATION_CONFIRMATION_CLOSE_BTN = (By.CSS_SELECTOR, '[data-locator-id="storeSelector-close-select"]')
     WISHLIST_TOAST = (By.CSS_SELECTOR, '[data-locator-id="snackbox-component"]')
+    SIGN_IN_TOOLTIP = (By.CSS_SELECTOR, '[class*="tooltip_value"]')

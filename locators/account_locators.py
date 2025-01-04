@@ -21,9 +21,15 @@ class AddressBookLocators:
     STATE_DROPDOWN = (By.CSS_SELECTOR, '#country-provinces')
     POST_CODE_INPUT = (By.CSS_SELECTOR, '#zip')
     PHONE_INPUT = (By.CSS_SELECTOR, '#phone')
-    DEFAULT_ADDRESS_CHECKBOX = (By.CSS_SELECTOR, '[data-locator-id="address-defaultAddress-select"]')
+    DEFAULT_ADDRESS_CHECKBOX = (By.CSS_SELECTOR, '[class*="checkbox_icon-container_"]')
     SAVE_ADDRESS_BTN = (By.CSS_SELECTOR, '[data-locator-id="address-saveAddress-select"]')
     CANCEL_ADDRESS_BTN = (By.CSS_SELECTOR, '[data-locator-id="address-cancelAddress-select"]')
+    FIRST_NAME_ERROR = (By.CSS_SELECTOR, '#firstName-error')
+    LAST_NAME_ERROR = (By.CSS_SELECTOR, '#lastName-error')
+    ADDRESS_1_ERROR = (By.CSS_SELECTOR, '#address1-error')
+    CITY_ERROR = (By.CSS_SELECTOR, '#city-error')
+    POST_CODE_ERROR = (By.CSS_SELECTOR, '#zip-error')
+    PHONE_ERROR = (By.CSS_SELECTOR, '#phone-error')
     # ADDRESS BOOK ITEM
     ADDRESS_CARD = (By.CSS_SELECTOR, '[data-locator-id*="address-addressItem-"]')
     ADDRESS_DETAILS_ITEM = (By.CSS_SELECTOR, '[data-locator-id*="address-addressItem-"] p span')
@@ -33,4 +39,3 @@ class AddressBookLocators:
     # MAIN ADDRESS SECTION
     MAIN_ADDRESS_OUTPUT = (By.CSS_SELECTOR, '[data-locator-id="address-mainAddress-read"]')
     MAIN_ADDRESS_DETAILS_ITEM = (By.CSS_SELECTOR, '[data-locator-id="address-mainAddress-read"] span')
-

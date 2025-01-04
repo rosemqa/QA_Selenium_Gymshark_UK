@@ -1,3 +1,5 @@
+from data.data import AutData
+
 
 class Login:
     EMAIL_REQUIRED_ERROR_TEXT = 'Please enter an email address'
@@ -16,3 +18,15 @@ class Wishlist:
     EMPTY_WISHLIST_TITLE = 'YOUR WISHLIST IS EMPTY'
     ITEM_REMOVED_TOAST_TEXT = 'Item removed from your wishlist'
     ITEM_ADDED_TOAST_TEXT = 'Item added to your wishlist'
+
+
+class Base:
+    SIGN_IN_TOOLTIP_TEXT = 'Sign In to access your Gymshark account!\nNew Customer? Create account'
+    ACCOUNT_ICON_DEFAULT_TEXT = 'Account'
+    ACCOUNT_ICON_LOGGED_IN_USER_TEXT = f'Hi, {AutData.USER_FIRST_NAME}'
+
+
+class Account:
+    EMPTY_ADDRESS_BOOK_TITLE_TEXT = 'ADDRESS BOOK IS EMPTY'
+    REQUIRED_FIELD_ERROR_TEXT = '*This field is required'
+    PHONE_ERROR_TEXT = '*Minimum 10 digits and maximum 22 digits, numbers only'

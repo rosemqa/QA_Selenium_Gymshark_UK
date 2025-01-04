@@ -13,6 +13,7 @@ class AccountPage(BasePage):
     def log_out(self):
         self.find_element(self.LOCATORS.LOG_OUT_LINK).click()
 
+    @allure.step('Click the View address book link')
     def view_address_book(self):
         self.find_element(self.LOCATORS.VIEW_ADDRESS_BOOK_LINK).click()
 
@@ -113,15 +114,31 @@ class AccountAddressBook(BasePage):
         self.find_element(self.LOCATORS.NAKE_ADDRESS_MAIN_RADIO_BTN).click()
         time.sleep(2)
 
-    def check_field_errors(self):
+    @allure.step('Save address without one of required fields and get field error')
+    def check_empty_field_errors(self, empty_field):
+        fields = {
+            'first_name': {'input': self.LOCATORS.FIRST_NAME_INPUT, 'error': self.LOCATORS.FIRST_NAME_ERROR},
+            'last_name': {'input': self.LOCATORS.LAST_NAME_INPUT, 'error': self.LOCATORS.LAST_NAME_ERROR},
+            'address1': {'input': self.LOCATORS.ADDRESS_1_INPUT, 'error': self.LOCATORS.ADDRESS_1_ERROR},
+            'city': {'input': self.LOCATORS.CITY_INPUT, 'error': self.LOCATORS.CITY_ERROR},
+            'post_code': {'input': self.LOCATORS.POST_CODE_INPUT, 'error': self.LOCATORS.POST_CODE_ERROR},
+            'phone': {'input': self.LOCATORS.PHONE_INPUT, 'error': self.LOCATORS.PHONE_ERROR}
+        }
         self.click_add_address_button()
+        self.fill_in_form_fields()
+        with allure.step(f'Clear {empty_field} field'):
+            self.find_element(fields[empty_field]['input']).clear()
         self.save_address()
-        first_name_error = self.find_element(self.LOCATORS.FIRST_NAME_ERROR).text
-        last_name_error = self.find_element(self.LOCATORS.LAST_NAME_ERROR).text
-        address1_error = self.find_element(self.LOCATORS.ADDRESS_1_ERROR).text
-        city_error = self.find_element(self.LOCATORS.CITY_ERROR).text
-        post_code_error = self.find_element(self.LOCATORS.POST_CODE_ERROR).text
-        return first_name_error, last_name_error, address1_error, city_error, post_code_error
+        if self.is_element_present(fields[empty_field]['error'], 2):
+            return self.find_element(fields[empty_field]['error']).text
+        return None
+
+    @allure.step('Enter a not valid phone number format and get field error')
+    def enter_not_valid_phone_format(self, input_value):
+        self.find_element(self.LOCATORS.PHONE_INPUT).send_keys(input_value)
+        if self.is_element_present(self.LOCATORS.PHONE_ERROR, 2):
+            return self.find_element(self.LOCATORS.PHONE_ERROR).text
+        return None
 
     @allure.step('Check if an address card is present')
     def is_address_card_present(self):
@@ -133,4 +150,3 @@ class AccountAddressBook(BasePage):
         if self.is_element_present(title):
             return True, self.get_empty_address_book_title_text()
         return False, None
-    
