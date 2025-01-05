@@ -86,14 +86,10 @@ class TestAccount:
             assert form == edited_address_details, 'Address details in the form and in the address card are different'
 
         @allure.description('Can change the main address via radiobutton in the address cards')
-        def test_change_main_address_in_address_cards(self, driver, clear_address_book):
+        def test_change_main_address_in_address_cards(self, driver, add_address, clear_address_book):
             page = AccountAddressBook(driver, URL.ACCOUNT_ADDRESS_BOOK)
             page.open_page()
 
-            # ADD FIRST ADDRESS
-            page.click_add_address_button()
-            page.fill_in_form_fields()
-            page.save_address()
             first_address_details = page.get_address_book_item_text()
 
             # CHECK MAIN ADDRESS
@@ -116,14 +112,10 @@ class TestAccount:
             assert changed_main_address == second_address_details, 'Main address was not changed'
 
         @allure.description('Can change the main address using the checkbox in the form')
-        def test_change_main_address_in_form(self, driver, clear_address_book):
+        def test_change_main_address_in_form(self, driver, add_address, clear_address_book):
             page = AccountAddressBook(driver, URL.ACCOUNT_ADDRESS_BOOK)
             page.open_page()
 
-            # ADD FIRST ADDRESS
-            page.click_add_address_button()
-            page.fill_in_form_fields()
-            page.save_address()
             first_address_details = page.get_address_book_item_text()
 
             # CHECK MAIN ADDRESS
