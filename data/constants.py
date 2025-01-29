@@ -21,7 +21,7 @@ class Wishlist:
 
 
 class Base:
-    SIGN_IN_TOOLTIP_TEXT = 'Sign In to access your Gymshark account!\nNew Customer? Create account'
+    SIGN_IN_TOOLTIP_TEXT = 'Sign in to get exclusive rewards & benefits\nNew Customer? Create account'
     ACCOUNT_ICON_DEFAULT_TEXT = 'Account'
     ACCOUNT_ICON_LOGGED_IN_USER_TEXT = f'Hi, {AutData.USER_FIRST_NAME}'
 
