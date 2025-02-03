@@ -30,3 +30,9 @@ class Account:
     EMPTY_ADDRESS_BOOK_TITLE_TEXT = 'ADDRESS BOOK IS EMPTY'
     REQUIRED_FIELD_ERROR_TEXT = '*This field is required'
     PHONE_ERROR_TEXT = '*Minimum 10 digits and maximum 22 digits, numbers only'
+
+
+class Search:
+    SEARCH_FIELD_PLACEHOLDER = 'What are you looking for today?'
+    NO_RESULTS_ERROR = lambda search_query: \
+        f'NO RESULTS FOUND\nWe are sorry but we can’t find any results for “{search_query}”'
