@@ -1,5 +1,4 @@
 import allure
-
 from locators.login_locators import LoginLocators
 from pages.base_page import BasePage
 
@@ -11,9 +10,9 @@ class LoginPage(BasePage):
     def enter_email(self, email):
         self.find_element(self.LOCATORS.EMAIL).send_keys(email)
 
-    @allure.step('Enter password')
     def enter_password(self, password):
-        self.find_element(self.LOCATORS.PASSWORD).send_keys(password)
+        with allure.step('Enter password'):
+            self.find_element(self.LOCATORS.PASSWORD).send_keys(password)
 
     @allure.step('Click the Log In button')
     def click_login_button(self):
