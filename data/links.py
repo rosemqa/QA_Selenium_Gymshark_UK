@@ -1,6 +1,6 @@
 
 class URL:
-    MAIN_PAGE = 'https://uk.gymshark.com'
+    MAIN_PAGE = 'https://uk.gymshark.com/'
     LOGIN_PAGE = 'https://auth.gymshark.com/u/login'
     ACCOUNT_PAGE = 'https://uk.gymshark.com/account'
     ACCOUNT_ADDRESS_BOOK = 'https://uk.gymshark.com/account/addresses'

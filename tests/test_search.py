@@ -50,7 +50,7 @@ class TestSearch:
         with check:
             assert recent_search_item_text == search_query, 'Recent search item and the search query are different'
         with check:
-            assert recent_search_item_link == f'{URL.MAIN_PAGE}/search?q={search_query}'
+            assert recent_search_item_link == f'{URL.MAIN_PAGE}search?q={search_query}'
         with check:
             assert is_searches_cleared, 'Recent searches is not cleared'
 
