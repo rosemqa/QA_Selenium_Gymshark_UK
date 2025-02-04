@@ -4,9 +4,9 @@ from selenium.webdriver.common.by import By
 class BagLocators:
     MINI_BAG_SHEET = (By.CSS_SELECTOR, '[data-locator-id="miniBag-component"]')
     CLOSE_BAG_BTN = (By.CSS_SELECTOR, '[data-locator-id="miniBag-closeButton-select"]')
-    ENTER_CODE_FIELD = (By.CSS_SELECTOR, '#code')
-    APPLY_CODE_BUTTON = (By.CSS_SELECTOR, '[data-locator-id="miniBag"] button')
-    CODE_ERROR = (By.CSS_SELECTOR, '#code-error')
+    ENTER_CODE_FIELD = (By.CSS_SELECTOR, '#minicart-discount-code')
+    APPLY_CODE_BUTTON = (By.CSS_SELECTOR, '[data-locator-id="miniBag-discountCode-submit"]')
+    CODE_ERROR = (By.CSS_SELECTOR, '#minicart-discount-code-error')
     CHECKOUT_BTN = (By.CSS_SELECTOR, '[data-locator-id="miniBag-checkout-select"]')
     DELETE_BTN = (By.CSS_SELECTOR, '[aria-label="remove from bag"]')
     ADD_TO_WISHLIST = (By.CSS_SELECTOR, '[data-locator-id="miniBag-component"] button[aria-label="add to wishlist"]')

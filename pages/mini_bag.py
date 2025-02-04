@@ -70,7 +70,7 @@ class MiniBag(BasePage):
         with allure.step('Move cursor outside the delivery info icon'):
             self.move_mouse_by_offset(10, 10)
         with allure.step('Check if the delivery info sheet disappeared'):
-            closed_sheet = self.is_disappeared(self.LOCATORS.DELIVERY_INFO_SHEET, 1)
+            closed_sheet = self.is_disappeared(self.LOCATORS.DELIVERY_INFO_SHEET, 2)
         return open_sheet, closed_sheet
 
     @allure.step('Click the Close button in the mini bag')
