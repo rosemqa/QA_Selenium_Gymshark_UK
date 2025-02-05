@@ -15,8 +15,8 @@ class WishListLocators:
 
     REMOVE_ALL_ITEMS_BTN = (By.CSS_SELECTOR, '[data-locator-id="wishlist-removeAllItems-select"] .icon-delete')
     MORE_MENU = (By.CSS_SELECTOR, '[aria-label="more-icon"]')
-    MORE_MENU_ADD_TO_BAG = (By.CSS_SELECTOR, '[data-locator-id="wishlist-actionMenu-addToBag-select"]')
-    MORE_MENU_REMOVE = (By.CSS_SELECTOR, '[data-locator-id="wishlist-actionMenu-remove-select"]')
+    MORE_MENU_ADD_TO_BAG = (By.CSS_SELECTOR, '[data-locator-id="plp-actionMenu-addToBag-select"]')
+    MORE_MENU_REMOVE = (By.CSS_SELECTOR, '[data-locator-id="plp-actionMenu-remove-select"]')
     REMOVE_ALL_YES_BTN = (By.CSS_SELECTOR, '[data-locator-id="wishlistRemove-confirm-select"]')
     REMOVE_ALL_NO_BTN = (By.CSS_SELECTOR, '[data-locator-id="wishlistRemove-cancel-select"]')
     WISHLIST_TOAST = (By.CSS_SELECTOR, '[data-locator-id="snackbox-component"]')

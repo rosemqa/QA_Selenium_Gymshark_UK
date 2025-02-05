@@ -61,7 +61,7 @@ class TestWishlist:
         assert is_count_icon_present, 'Bag count icon is missing, the product was probably not added to the bag'
 
     @allure.description('Can restore product after deletion')
-    def test_undo_deletion(self, driver, login, check):
+    def test_undo_deletion(self, driver, login, add_to_wishlist, clear_wishlist, check):
         page = WishlistPage(driver, URL.WISHLIST)
         page.open_page()
 
@@ -71,11 +71,11 @@ class TestWishlist:
         toast_text_after = page.get_toast_text()
         is_toast_disappeared = page.is_wishlist_toast_disappeared()
         with check:
-            assert is_product_present, 'Product was not restored to the wishlist'
-        with check:
             assert is_toast_present, 'Wishlist toast is missing'
-        with check:
             assert toast_text == Wishlist.ITEM_REMOVED_TOAST_TEXT, 'Check the toast text when deleting a product'
         with check:
+            assert is_product_present, 'Product was not restored to the wishlist'
+        with check:
             assert toast_text_after == Wishlist.ITEM_ADDED_TOAST_TEXT, 'Check the toast text after restoring a product'
-        assert is_toast_disappeared, 'The toast was not disappeared after 5 seconds'
+        with check:
+            assert is_toast_disappeared, 'The toast was not disappeared after 5 seconds'
