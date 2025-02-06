@@ -84,7 +84,7 @@ class ProductListingPage(BasePage):
     @allure.step('Check if new products are listed first')
     def check_sorted_by_newest(self):
         new_products = []
-        product_cards = self.find_elements(self.LOCATORS.CARD)
+        product_cards = self.find_elements(self.LOCATORS.PRODUCT_CARD)
         for card in product_cards:
             if "NEW" in card.text:
                 new_products.append(card)

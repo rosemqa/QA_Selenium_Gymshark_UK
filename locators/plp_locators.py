@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 
 class PLPLocators:
-    PRODUCT_CARD = (By.CSS_SELECTOR, '[data-locator-id*="plp-productCard-"]')
+    PRODUCT_CARD = (By.CSS_SELECTOR, '[class*="product-card_image-wrap"]')
     PRODUCT_TITLE = (By.CSS_SELECTOR, '[data-locator-id*="plp-productTitle"]')
     PRODUCT_COLOR = (By.CSS_SELECTOR, '[data-locator-id*="plp-productColour"]')
     PRODUCT_PRICE = (By.CSS_SELECTOR, '[class*="product-card_product-price"]')
