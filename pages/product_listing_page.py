@@ -75,15 +75,20 @@ class ProductListingPage(BasePage):
         price_list = [float(price.text.split('£')[1]) for price in prices]
         return price_list == sorted(price_list, reverse=True)
 
-    @allure.step('Check if the number of products with tag "NEW" increases after sorting by NEW')
-    def sort_by_new(self):
-        sort_by_newest = self.LOCATORS.SORT_BY_NEWEST
-        new_items_before = len(self.find_elements(self.LOCATORS.PRODUCT_TAG_NEW))
-        self.move_to_element(sort_by_newest)
-        self.find_element(sort_by_newest).click()
+    @allure.step('Click the Newest under Sort By')
+    def sort_by_newest(self):
+        self.move_to_element(self.LOCATORS.SORT_BY_NEWEST)
+        self.find_element(self.LOCATORS.SORT_BY_NEWEST).click()
         time.sleep(1)
-        new_items_after = len(self.find_elements(self.LOCATORS.PRODUCT_TAG_NEW))
-        return new_items_before < new_items_after
+
+    @allure.step('Check if new products are listed first')
+    def check_sorted_by_newest(self):
+        new_products = []
+        product_cards = self.find_elements(self.LOCATORS.CARD)
+        for card in product_cards:
+            if "NEW" in card.text:
+                new_products.append(card)
+        return len(new_products), product_cards[:len(new_products)] == new_products
 
     @allure.step('Select random price range filter and get min and max prices')
     def select_price_filter(self):

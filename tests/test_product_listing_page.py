@@ -3,6 +3,7 @@ from pages.product_listing_page import ProductListingPage
 from data.links import URL
 
 
+@allure.epic('PLP')
 class TestPLP:
     @allure.description('Can sort by price asc/desc')
     def test_sorting_by_price(self, driver, check):
@@ -33,7 +34,10 @@ class TestPLP:
         page = ProductListingPage(driver, URL.PLP)
         page.open_page()
 
-        assert page.sort_by_new(), 'Sorting by NEW is incorrect'
+        page.sort_by_newest()
+        number_of_new_products, are_products_sorted = page.check_sorted_by_newest()
+        assert number_of_new_products > 0, 'No new products'
+        assert are_products_sorted, 'New products are not listed first'
 
     @allure.description('Can filter by price range')
     def test_price_filter(self, driver, check):
