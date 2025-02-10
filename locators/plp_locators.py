@@ -2,13 +2,16 @@ from selenium.webdriver.common.by import By
 
 
 class PLPLocators:
-    PRODUCT_CARD = (By.CSS_SELECTOR, '[class*="product-card_image-wrap"]')
+    PRODUCT_CARD = (By.CSS_SELECTOR, 'div>[data-locator-id*="plp-productCard-"]')
     PRODUCT_TITLE = (By.CSS_SELECTOR, '[data-locator-id*="plp-productTitle"]')
     PRODUCT_COLOR = (By.CSS_SELECTOR, '[data-locator-id*="plp-productColour"]')
     PRODUCT_PRICE = (By.CSS_SELECTOR, '[class*="product-card_product-price"]')
     PRODUCT_SIZE = (By.CSS_SELECTOR, '[data-locator-id*="plp-size"]')
     PRODUCT_TAG_NEW = (By.CSS_SELECTOR, '[data-locator-id="plp-productTag-new-read"]')
     ADD_TO_WISHLIST = (By.CSS_SELECTOR, '[data-locator-id*="plp-productCardWishlist"]')
+
+    LOGIN_PROMPT_CLOSE_BTN = (By.CSS_SELECTOR, 'data-locator-id="loginPrompt-close-select"')
+    LOGIN_PROMPT_LOGIN_BTN = (By.CSS_SELECTOR, 'data-locator-id="loginPrompt-login-select"')
 
     TOTAL_PRODUCT_COUNT = (By.CSS_SELECTOR, '[data-locator-id="plp-productCount-read"]')
 
