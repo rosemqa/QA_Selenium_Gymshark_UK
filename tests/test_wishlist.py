@@ -16,7 +16,7 @@ class TestWishlist:
         assert empty_wishlist_title == Wishlist.EMPTY_WISHLIST_TITLE, 'Empty wishlist title text is incorrect'
 
     @allure.description('Can delete product using the More menu')
-    def test_remove_product_via_menu(self, driver, add_to_wishlist, clear_wishlist):
+    def test_remove_product_via_menu(self, driver, login, add_to_wishlist, clear_wishlist):
         page = WishlistPage(driver, URL.WISHLIST)
         page.open_page()
 
