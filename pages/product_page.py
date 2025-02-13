@@ -43,7 +43,7 @@ class ProductPage(BasePage):
     @allure.step('Select a random color')
     def select_random_color(self):
         self.find_elements(self.LOCATORS.COLOR_SELECTOR_ITEM)[random.randint(1, 2)].click()
-        time.sleep(1)
+        time.sleep(3)
         return self.get_product_color_text(), self.get_product_image_src()
 
     @allure.step('Select a random size')

@@ -43,7 +43,7 @@ class ProductListingPage(BasePage):
         button = self.LOCATORS.LOAD_MORE_BTN
         self.move_to_element(button)
         self.find_element(button).click()
-        time.sleep(1)
+        time.sleep(2)
         products_quantity_after = len(self.find_elements(self.LOCATORS.PRODUCT_CARD))
         return products_quantity_before < products_quantity_after
 
@@ -53,7 +53,7 @@ class ProductListingPage(BasePage):
         button = self.LOCATORS.VIEW_ALL_BTN
         self.move_to_element(button)
         self.find_element(button).click()
-        time.sleep(1)
+        time.sleep(2)
         products_quantity = len(self.find_elements(self.LOCATORS.PRODUCT_CARD))
         return quantity_of_all_products == products_quantity
 
@@ -107,8 +107,9 @@ class ProductListingPage(BasePage):
     @allure.step('Click Clear All')
     def clear_all_filters(self):
         self.find_element(self.LOCATORS.CLEAR_ALL_FILTERS).click()
-        time.sleep(1)
+        time.sleep(2)
 
     @allure.step('Click Add To Wishlist icon')
     def add_to_wishlist(self):
+        self.move_to_element(self.LOCATORS.ADD_TO_WISHLIST)
         self.find_element(self.LOCATORS.ADD_TO_WISHLIST).click()

@@ -1,3 +1,5 @@
+import time
+
 import allure
 from locators.base_locators import BaseLocators
 from pages.base_page import BasePage
@@ -46,6 +48,7 @@ class SearchModal(BasePage):
     def click_view_all_link(self):
         view_all_name = self.find_element(self.LOCATORS.VIEW_ALL_NAME).text
         self.find_element(self.LOCATORS.VIEW_ALL_LINK).click()
+        time.sleep(1)
         return view_all_name.lower()
 
     @allure.step('Click the Clear button in the recent searches and check if recent searches is disappeared')

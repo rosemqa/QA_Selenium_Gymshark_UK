@@ -59,6 +59,7 @@ class MiniBag(BasePage):
 
     @allure.step('Click the Undo button')
     def restore_product(self):
+        time.sleep(3)
         self.find_element(self.LOCATORS.UNDO_DELETION_BTN).click()
 
     def check_delivery_info_sheet(self):
@@ -68,7 +69,7 @@ class MiniBag(BasePage):
         with allure.step('Check if the delivery info sheet is open'):
             open_sheet = self.is_element_present(self.LOCATORS.DELIVERY_INFO_SHEET)
         with allure.step('Move cursor outside the delivery info icon'):
-            self.move_mouse_by_offset(10, 10)
+            self.move_mouse_by_offset(15, 15)
         with allure.step('Check if the delivery info sheet disappeared'):
             closed_sheet = self.is_disappeared(self.LOCATORS.DELIVERY_INFO_SHEET, 2)
         return open_sheet, closed_sheet
