@@ -30,6 +30,6 @@ def generated_address():
 
 def not_valid_phone_number():
     short_number = fake.random_number(random.randint(1, 9))
-    long_number = fake.random_number(22)
+    long_number = fake.random_number(22, True)
     string = fake.word()
     return [short_number, long_number, string]
