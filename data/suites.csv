@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Feb 16 14:56:05 GMT 2025","Sun Feb 16 14:56:07 GMT 2025","2183","tests","test_mini_bag","TestMiniBag","","","test_delivery_info_sheet","Can open and close the delivery info sheet"
+"passed","Sun Feb 16 14:55:54 GMT 2025","Sun Feb 16 14:56:00 GMT 2025","5223","tests","test_mini_bag","TestMiniBag","","","test_select_product_quantity","Can change a product quantity"
+"passed","Sun Feb 16 14:56:07 GMT 2025","Sun Feb 16 14:56:10 GMT 2025","2884","tests","test_mini_bag","TestMiniBag","","","test_delete_product","Can delete product from the mini bag"
+"passed","Sun Feb 16 14:56:01 GMT 2025","Sun Feb 16 14:56:05 GMT 2025","4042","tests","test_mini_bag","TestMiniBag","","","test_restore_product","Can restore product in the mini bag"
+"passed","Sun Feb 16 14:56:10 GMT 2025","Sun Feb 16 14:56:10 GMT 2025","242","tests","test_mini_bag","TestMiniBag","","","test_close_mini_bag","Can close the mini bag"
+"passed","Sun Feb 16 14:56:00 GMT 2025","Sun Feb 16 14:56:01 GMT 2025","1050","tests","test_mini_bag","TestMiniBag","","","test_not_valid_discount_code","Can not apply the wrong discount code"
