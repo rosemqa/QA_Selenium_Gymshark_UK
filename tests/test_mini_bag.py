@@ -6,6 +6,7 @@ from pages.mini_bag import MiniBag
 
 @allure.epic('Mini bag')
 @pytest.mark.usefixtures('add_product_to_bag')
+@pytest.mark.docker
 class TestMiniBag:
     @allure.description('Can change a product quantity')
     def test_select_product_quantity(self, driver):

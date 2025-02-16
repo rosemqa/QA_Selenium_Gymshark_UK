@@ -17,10 +17,23 @@ def driver():
     chrome_options.add_argument('--disable-infobars')
     chrome_options.page_load_strategy = 'eager'
 
-    driver = webdriver.Chrome(options=chrome_options)
-    print('\nStart Chrome browser')
-    driver.maximize_window()
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument('--headless=new')
+
+    # driver = webdriver.Chrome(options=chrome_options)
+    # print('\nStart Chrome browser')
+    # # driver.maximize_window()
     # driver.set_window_size(1920, 1080)
+    # # driver.set_window_size(3840, 2160)
+    # yield driver
+    # driver.quit()
+    # print('\nQuit browser')
+
+    # driver = webdriver.Remote('http://localhost:4444/wd/hub', options=chrome_options)
+    driver = webdriver.Remote('http://selenium_chrome:4444/wd/hub', options=chrome_options)
+    print('Start Chrome browser in Docker')
+    driver.set_window_size(1920, 1080)
     yield driver
     driver.quit()
     print('\nQuit browser')
@@ -53,9 +66,7 @@ def add_product_to_bag(driver):
     page.open_page()
 
     page.select_random_size()
-    time.sleep(2)
     page.add_to_bag()
-    time.sleep(2)
     page.open_mini_bag()
 
 
