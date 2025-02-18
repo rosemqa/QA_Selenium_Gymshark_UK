@@ -1,5 +1,7 @@
 import time
+import allure
 import pytest
+from datetime import datetime
 from selenium import webdriver
 from data.data import AutData
 from data.links import URL
@@ -10,31 +12,59 @@ from pages.product_page import ProductPage
 from pages.wishlist_page import WishlistPage
 
 
+def pytest_addoption(parser):
+    parser.addoption(
+        '--browser_name',
+        action='store',
+        default='chrome',
+        help='Choose browser: chrome, firefox or edge'
+    )
+
+
 @pytest.fixture(scope='class')
-def driver():
+def driver(request):
+    browser_name = request.config.getoption('--browser_name')
+
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--disable-notifications')
     chrome_options.add_argument('--disable-infobars')
     chrome_options.page_load_strategy = 'eager'
-
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument('--headless=new')
+    # chrome_options.add_argument('--headless=new')
 
-    # driver = webdriver.Chrome(options=chrome_options)
-    # print('\nStart Chrome browser')
-    # # driver.maximize_window()
-    # driver.set_window_size(1920, 1080)
-    # # driver.set_window_size(3840, 2160)
-    # yield driver
-    # driver.quit()
-    # print('\nQuit browser')
+    firefox_options = webdriver.FirefoxOptions()
+    firefox_options.add_argument("--disable-notifications")
+    firefox_options.add_argument('--disable-infobars')
+    firefox_options.page_load_strategy = 'eager'
+    firefox_options.add_argument("--disable-dev-shm-usage")
+    firefox_options.add_argument('--headless')
 
-    # driver = webdriver.Remote('http://localhost:4444/wd/hub', options=chrome_options)
-    driver = webdriver.Remote('http://selenium_chrome:4444/wd/hub', options=chrome_options)
-    print('Start Chrome browser in Docker')
-    driver.set_window_size(1920, 1080)
+    if browser_name == 'chrome':
+        driver = webdriver.Chrome(options=chrome_options)
+        print('\nStart Chrome browser')
+        # driver.maximize_window()
+        driver.set_window_size(1920, 1080)
+    elif browser_name == 'firefox':
+        driver = webdriver.Firefox(options=firefox_options)
+        print('\nStart Firefox browser')
+        # driver.maximize_window()
+        driver.set_window_size(1920, 1080)
+    elif browser_name == 'docker_chrome':
+        driver = webdriver.Remote('http://localhost:4444/wd/hub', options=chrome_options)
+        # driver = webdriver.Remote('http://selenium_chrome:4444/wd/hub', options=chrome_options)
+        print('Start Chrome browser in Docker')
+        driver.set_window_size(1920, 1080)
+    elif browser_name == 'docker_firefox':
+        driver = webdriver.Remote('http://localhost:4440/wd/hub', options=firefox_options)
+        # driver = webdriver.Remote('http://selenium_firefox:4440/wd/hub', options=firefox_options)
+        print('Start Firefox browser in Docker')
+        driver.set_window_size(1920, 1080)
+    else:
+        raise pytest.UsageError('--browser_name should be chrome, firefox or edge')
     yield driver
+    attachment = driver.get_screenshot_as_png()
+    allure.attach(attachment, name=f"Screenshot {datetime.today()}", attachment_type=allure.attachment_type.PNG)
     driver.quit()
     print('\nQuit browser')
 
