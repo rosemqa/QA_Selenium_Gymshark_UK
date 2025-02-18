@@ -1,5 +1,4 @@
 import allure
-import pytest
 from pages.product_listing_page import ProductListingPage
 from data.links import URL
 
@@ -12,9 +11,9 @@ class TestPLP:
         page.open_page()
 
         with check:
-            assert page.sort_by_price_asc, 'Sorting by price asc is incorrect'
+            assert page.sort_by_price_asc(), 'Sorting by price asc is incorrect'
         with check:
-            assert page.sort_by_price_desc, 'Sorting by price desc is incorrect'
+            assert page.sort_by_price_desc(), 'Sorting by price desc is incorrect'
 
     @allure.description('Can load more products after clicking the Load More button')
     def test_load_more(self, driver):
@@ -24,7 +23,6 @@ class TestPLP:
         assert page.load_more(), 'Product list does not increase after clicking the Load More button'
 
     @allure.description('Can load all products after clicking the View All button')
-    @pytest.mark.xfail(reason="does not work with Selenium webdriver")
     def test_view_all_products(self, driver):
         page = ProductListingPage(driver, URL.PLP)
         page.open_page()
