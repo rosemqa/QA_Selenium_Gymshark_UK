@@ -43,25 +43,17 @@ def driver(request):
     if browser_name == 'chrome':
         driver = webdriver.Chrome(options=chrome_options)
         print('\nStart Chrome browser')
-        # driver.maximize_window()
-        driver.set_window_size(1920, 1080)
     elif browser_name == 'firefox':
         driver = webdriver.Firefox(options=firefox_options)
         print('\nStart Firefox browser')
-        # driver.maximize_window()
-        driver.set_window_size(1920, 1080)
     elif browser_name == 'docker_chrome':
-        driver = webdriver.Remote('http://localhost:4444/wd/hub', options=chrome_options)
-        # driver = webdriver.Remote('http://selenium_chrome:4444/wd/hub', options=chrome_options)
+        # driver = webdriver.Remote('http://localhost:4444/wd/hub', options=chrome_options)
+        driver = webdriver.Remote('http://selenium_chrome:4444/wd/hub', options=chrome_options)
         print('Start Chrome browser in Docker')
-        driver.set_window_size(1920, 1080)
-    elif browser_name == 'docker_firefox':
-        driver = webdriver.Remote('http://localhost:4440/wd/hub', options=firefox_options)
-        # driver = webdriver.Remote('http://selenium_firefox:4440/wd/hub', options=firefox_options)
-        print('Start Firefox browser in Docker')
-        driver.set_window_size(1920, 1080)
     else:
         raise pytest.UsageError('--browser_name should be chrome, firefox or edge')
+    # driver.maximize_window()
+    driver.set_window_size(1920, 1080)
     yield driver
     attachment = driver.get_screenshot_as_png()
     allure.attach(attachment, name=f"Screenshot {datetime.today()}", attachment_type=allure.attachment_type.PNG)
