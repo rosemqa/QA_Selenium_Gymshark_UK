@@ -1,11 +1,9 @@
-import time
 import allure
 import pytest
 from datetime import datetime
 from selenium import webdriver
 from data.data import AutData
 from data.links import URL
-from pages.account_page import AccountAddressBook
 from pages.login_page import LoginPage
 from pages.product_listing_page import ProductListingPage
 from pages.product_page import ProductPage
@@ -47,7 +45,6 @@ def driver(request):
         driver = webdriver.Firefox(options=firefox_options)
         print('\nStart Firefox browser')
     elif browser_name == 'docker_chrome':
-        # driver = webdriver.Remote('http://localhost:4444/wd/hub', options=chrome_options)
         driver = webdriver.Remote('http://selenium_chrome:4444/wd/hub', options=chrome_options)
         print('Start Chrome browser in Docker')
     else:

@@ -28,8 +28,6 @@ services:
         condition: service_healthy
     image: tests
     container_name: pytest_runner_chrome_works
-    # network_mode: service:selenium_chrome
-    # network_mode: host
     command: pytest --browser_name=docker_chrome -v -m docker --reruns 3 --alluredir=allure_results/
     environment:
       PASSWORD: ${PASSWORD}
